@@ -34,7 +34,7 @@ using Facepunch;
 
 namespace Oxide.Plugins
 {
-    [Info("ZNExperience", "DocValerian", "2.0.5")]
+    [Info("ZNExperience", "DocValerian, Furt", "2.0.6")]
     public class ZNExperience : RustPlugin
     {
         static ZNExperience Plugin;
@@ -1907,7 +1907,7 @@ namespace Oxide.Plugins
             {
                 Text =
                 {
-                    Text = "ZN Profile (/p)",
+                    Text = "Experience Profile",
                     FontSize = 12,
                     Align = TextAnchor.UpperLeft,
                     Color = "0 0 0 1"
@@ -1922,7 +1922,7 @@ namespace Oxide.Plugins
             {
                 Text =
                 {
-                    Text = "ZN Profile (/p)",
+                    Text = "Experience Profile",
                     FontSize = 12,
                     Align = TextAnchor.UpperLeft,
                     Color = "1 1 1 1"
@@ -2113,7 +2113,7 @@ namespace Oxide.Plugins
         }
 
         private const string globalNoErrorString = "none";
-        private const string mainName = "ZNExperience";
+        private const string mainName = "Experience";
         private HashSet<BasePlayer> UiPlayers = new HashSet<BasePlayer>();
         private string[] uiElements =
         {
@@ -2179,7 +2179,7 @@ namespace Oxide.Plugins
             {
                 Text =
                 {
-                    Text = "ZN Profile (/p)",
+                    Text = "Experience Profile",
                     FontSize = 18,
                     Align = TextAnchor.MiddleLeft,
                     Color = "1 1 1 1"
@@ -2195,7 +2195,7 @@ namespace Oxide.Plugins
             {
                 Text =
                 {
-                    Text = "Zombie Nation Experience Manager v" + Plugin.Version + " by " + Plugin.Author,
+                    Text = "Experience Manager v" + Plugin.Version + " by " + Plugin.Author,
                     FontSize = 10,
                     Align = TextAnchor.MiddleRight,
                     Color = "1 1 1 1"
