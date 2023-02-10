@@ -28,13 +28,13 @@ using System.Text.RegularExpressions;
 
 namespace Oxide.Plugins
 {
-    [Info("BuildManager", "DocValerian", "1.12.5")]
+    [Info("BuildManager", "DocValerian, Furt", "1.12.6")]
     class BuildManager : RustPlugin
     {
         static BuildManager Plugin;
         
         [PluginReference]
-        private Plugin ServerRewards, PatchesForPVE, HeliFromHell, BradleyFromHell, ZombieFromHell, ZNExperience;
+        private Plugin ServerRewards, HeliFromHell, BradleyFromHell, ZombieFromHell, ZNExperience;
 
         static ConfigFile Cfg = new ConfigFile();
         private const string permAgrade = "buildmanager.agrade.use";
@@ -308,7 +308,6 @@ namespace Oxide.Plugins
                 znBuildMsg(player, "<color=red>(error)</color> You must place a <color=green>Tool Cupboard (TC)</color> after 20 blocks to prevent spam.\n<color=#999999>It can be repositioned later with /remove</color>");
                 buildingBlock.Kill(BaseNetworkable.DestroyMode.None);
             }
-           // Puts("DEBUG: built " + buildingBlock.PrefabName);
             if (
                 b.buildingBlocks.Count() >= 21 && !buildingBlock.PrefabName.Contains("roof")
               )
@@ -354,18 +353,6 @@ namespace Oxide.Plugins
         // prevent placing TC on oversized bases and connecting partial bases
         private void OnEntitySpawned(BaseEntity entity, UnityEngine.GameObject gameObject)
         {
-            /*
-            if (entity.ShortPrefabName.Contains("xmas.advanced.lights"))
-            {
-                
-                NextTick(() =>
-                {
-                   //Puts("DEBUG: adding xmaslight " + entity.OwnerID);
-                   entity.Kill(BaseNetworkable.DestroyMode.None);
-                });
-
-            }
-            */
             if(!entity.ShortPrefabName.Contains("cupboard.tool") && !buildingPrefabNames.Contains(entity.ShortPrefabName)) return;
             if(entity.OwnerID == 0) return;
             BasePlayer player = BasePlayer.FindByID(entity.OwnerID);
@@ -373,11 +360,8 @@ namespace Oxide.Plugins
             
             if(player.IsSleeping() == true || player.IsConnected == false || HasPermission(player.UserIDString, permUnlimited)) return;
 
-
-
             BuildingPrivlidge privilege = entity.GetBuildingPrivilege();
             
-
             // CHECK for TC distance to other TCs (of player) first
             if(entity.ShortPrefabName.Contains("cupboard.tool") && !checkTCdistanceOk(player, privilege)){
                 NextTick(() =>
@@ -426,10 +410,6 @@ namespace Oxide.Plugins
                     znBuildMsg(player, "Your base is beyond the " + currentZone + " height limit! ("
                                 + Cfg.Limits[currentZone]["height"] 
                                 + ")");
-                    //killBuilding(building, player.userID);
-                    //znBuildMsg(player, "You have somehow (tried to) circumvent the height limit! (" 
-                    //            + Cfg.Limits[currentZone]["height"] 
-                    //            + ") \n Your entity was destroyed, there will be no refunds!");
 				    return;
                 }
             }
@@ -573,8 +553,6 @@ namespace Oxide.Plugins
         private bool canBuildInZone(BasePlayer player, string prefabName, string groupName)
         {
             if(HasPermission(player.UserIDString, permUnlimited)) return true;
-            //Puts("Debug: groupName: " + groupName);
-            //Puts("Debug: prefabName: " + prefabName);
 
             if (Cfg.BannedItemsAlternatives.ContainsKey(prefabName))
             {
@@ -1007,7 +985,7 @@ namespace Oxide.Plugins
 
         private void znBuildMsg(BasePlayer player, string msg)
         {
-            SendReply(player, "<color=orange>ZN-Build:</color> " + msg);
+            SendReply(player, "<color=orange>Build Manager:</color> " + msg);
         }
         private void refundBuildingBlock(BasePlayer player, BuildingBlock buildingBlock)
         {
@@ -1084,25 +1062,19 @@ namespace Oxide.Plugins
             List<BuildingPrivlidge> list = new List<BuildingPrivlidge>();
             Vis.Entities<BuildingPrivlidge>(position, range, list, tcMasks);
             foreach(BuildingPrivlidge entity in list) {
-                // ignore TCs in caves and the just placed tc
+
                 terrainHeight = TerrainMeta.HeightMap.GetHeight(entity.transform.position) - 0.5f;
                 if(entity.transform.position.y < terrainHeight) continue;
                 if(bp && entity == bp) continue;
 
                 distance = Vector3Ex.Distance2D(entity.transform.position, position);
-//Puts("Distance: " + distance);
-                // player has a TC within 400m already
+
                 if(entity.OwnerID == player.userID){
                     znBuildMsg(player, "You are not allowed to place another "+typeString+" within "+ range + "m to your existing one. ("+distance+"m away)");
                     return false;
                 }
-                // too close to other base
-                //if(distance <= 50f){
-                //    znBuildMsg(player, "You are not allowed to place a  "+typeString+" so close to another base.");
-                //    return false;
-                //}
             }
-            // all good
+
             return true;
         }
 
@@ -1112,16 +1084,6 @@ namespace Oxide.Plugins
             {
                 return "exception";
             }
-            if(PatchesForPVE != null)
-            {
-                bool isInTownRange = (bool)PatchesForPVE?.Call<bool>("IsCloseToTown", player.transform.position);
-                if (isInTownRange)
-                {
-                    return "town";
-                }
-            }
-            // Special Wipe September 2023
-            //return permUnlimited;
 
             if (privlidge != null)
             {
@@ -1140,7 +1102,6 @@ namespace Oxide.Plugins
                 if (permission.UserHasPermission(player.UserIDString, permExtended_1)) return permExtended_1;
             }
             
-            //Puts("DEBUG: currentZone: " + currentZone);
             return currentZone;
         }
 
@@ -1282,7 +1243,6 @@ namespace Oxide.Plugins
                     var Code = GameManager.server.CreateEntity("assets/prefabs/locks/keypad/lock.code.prefab") as CodeLock;
                     Code.Spawn();
                     Code.code = ""+RandomCode();
-//Puts("DEBUG: code is " + Code.code);
                     Code.SetParent(Entity, Entity.GetSlotAnchorName(BaseEntity.Slot.Lock));
                     Entity.SetSlot(BaseEntity.Slot.Lock, Code);
                     Code.SetFlag(BaseEntity.Flags.Locked, true);
