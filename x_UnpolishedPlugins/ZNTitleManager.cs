@@ -32,7 +32,7 @@ using System.Text.RegularExpressions;
 
 namespace Oxide.Plugins
 {
-    [Info("ZNTitleManager", "DocValerian", "1.0.4")]
+    [Info("ZNTitleManager", "DocValerian, Furt", "1.0.5")]
     class ZNTitleManager : RustPlugin
     {
         static ZNTitleManager Plugin;
@@ -136,7 +136,7 @@ namespace Oxide.Plugins
             eternalData = Interface.Oxide.DataFileSystem.ReadObject<EternalData>("ZNTitleManager_eternal");
             SaveData();
 
-            string[] commandAliases = { "hs", "score", "pc"};
+            string[] commandAliases = { "hs", "score", "pc", "titles"};
             foreach (string cmdAlias in commandAliases)
                 cmd.AddChatCommand(cmdAlias, this, "OpenTitleUI");
         }
@@ -543,7 +543,7 @@ namespace Oxide.Plugins
             {
                 Text =
                 {
-                    Text = "ZN Title Manager",
+                    Text = "Title Manager",
                     FontSize = 18,
                     Align = TextAnchor.MiddleLeft,
                     Color = "1 1 1 1"
