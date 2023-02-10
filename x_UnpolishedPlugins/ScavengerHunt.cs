@@ -32,7 +32,7 @@ using System.Collections;
 
 namespace Oxide.Plugins
 {
-    [Info("ScavengerHunt", "DocValerian", "1.4.7")]
+    [Info("ScavengerHunt", "DocValerian, Furt", "1.4.8")]
     class ScavengerHunt : RustPlugin
     {
         static ScavengerHunt Plugin;
@@ -84,7 +84,7 @@ namespace Oxide.Plugins
             public float rerollBasePrice = 100f;
             public float rerollMultiplyer = 0.9f;
 
-            [JsonProperty(PropertyName = "Scanvenger Quest Levels")]
+            [JsonProperty(PropertyName = "Scavenger Quest Levels")]
             public Dictionary<string, ZNScavengerLevel> huntLevels = new Dictionary<string, ZNScavengerLevel>()
             {
                 ["scavenge.easy"] = new ZNScavengerLevel { id = "scavenge.easy", numItems = 3, rewardPerCompletion = 1200, stacks = 3,
@@ -1014,7 +1014,7 @@ namespace Oxide.Plugins
         }
         private void toggleUI(BasePlayer player)
         {
-            string msg = "<color=green>ZN-Quests:</color> Challenge Quest UI ";
+            string msg = "<color=green>Scavenger-Hunt:</color> Challenges UI ";
             if (storedData.noUIPlayers.Contains(player.userID))
             {
                 storedData.noUIPlayers.Remove(player.userID);
@@ -1031,8 +1031,8 @@ namespace Oxide.Plugins
         }
         private void showInfoMessage(BasePlayer player)
         {
-            string msg = "<color=orange>===== ZN Quests - Challenges ======</color>";
-            msg += "\nQuest Challenges are timed server wide challenges. ";
+            string msg = "<color=orange>===== Scavenger Hunt - Challenges ======</color>";
+            msg += "\nThese challenges are timed server wide. ";
             msg += "\nGoal is to collect the current resource (farm&gather).";
             msg += "\nIt counts only number of nodes finished or piles gathered, to";
             msg += "\nkeep it fair for everyone, no matter their levels";
@@ -1129,7 +1129,7 @@ namespace Oxide.Plugins
                         Puts("DEBUG: START new Challenge "  + c.name);
                         storedData.lastChallengeId = c.id;
                         storedData.currentChallenge = new CurrentChallenge(c);
-                        Server.Broadcast("<color=green>ZN-Quests:</color> A new challenge quest for <color=orange>" + c.challengeScoreName + "</color> has started!");
+                        Server.Broadcast("<color=green>Scavenger Hunt:</color> A new challenge for <color=orange>" + c.challengeScoreName + "</color> has started!");
 
                         storedData.currentChallenge.highscores.Add(Cfg.infoPlayerID, Cfg.MinRewardScore);
                         storedData.currentChallenge.playerNames.Add(Cfg.infoPlayerID, "--- MIN REWARD SCORE ---");
@@ -1213,7 +1213,7 @@ namespace Oxide.Plugins
             }
             List<ulong> sortedChallengers = sortChallengers(c.highscores);
             int place = 1;
-            string msg = "<color=green>ZN-Quests:</color> The " + c.info.name + " has ended.";
+            string msg = "<color=green>Scavenger Hunt:</color> The " + c.info.name + " has ended.";
             foreach (ulong cId in sortedChallengers)
             {
                 if (cId == Cfg.infoPlayerID) continue;
@@ -1264,7 +1264,7 @@ namespace Oxide.Plugins
             var p = BasePlayer.FindByID(pId);
             if (p != null)
             {
-                SendReply(p, "<color=green>ZN-Quest:</color> You are "+place+" in the last Challenge Quest.\nUse <color=orange>/loot</color> to claim your reward.");
+                SendReply(p, "<color=green>Scavenger Hunt:</color> You are "+place+" in the last Challenge.\nUse <color=orange>/loot</color> to claim your reward.");
             }
         }
 
@@ -1721,7 +1721,7 @@ namespace Oxide.Plugins
             {
                 Text =
                     {
-                        Text = "Your Quest Score: " + sm.questsPoints,
+                        Text = "Your Challenge Score: " + sm.questsPoints,
                         FontSize = 12,
                         Align = TextAnchor.MiddleRight,
                         Color = "1 1 1 1"
@@ -1739,7 +1739,7 @@ namespace Oxide.Plugins
                 {
                     Text =
                     {
-                        Text = "Create a new Scavenger Quest!",
+                        Text = "Create a new Scavenger Challenge!",
                         FontSize = 18,
                         Align = TextAnchor.MiddleCenter,
                         Color = "1 1 1 1"
@@ -1796,7 +1796,7 @@ namespace Oxide.Plugins
                 {
                     Text =
                     {
-                        Text = "Your current Quest!",
+                        Text = "Your current Challenge!",
                         FontSize = 18,
                         Align = TextAnchor.MiddleCenter,
                         Color = "1 1 1 1"
@@ -1837,7 +1837,7 @@ namespace Oxide.Plugins
                 CursorEnabled = true
             }, parentUiId, elUiId);
 
-            string questTitle = "Quest: ID" + q.id + " Level: " + q.level;
+            string questTitle = "Challenge: ID" + q.id + " Level: " + q.level;
             if (q.isComplete) questTitle += " <color=lime>COMPLETED!</color>";
             elements.Add(new CuiLabel
             {
