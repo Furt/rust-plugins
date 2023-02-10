@@ -366,7 +366,7 @@ namespace Oxide.Plugins
                     {
                         AddXp(player.userID, papers.amount);
                     }
-                    SendReply(player, "<color=green>ZN-XP:</color> You gained XP from looting " + papers.amount + " research papers (XP-Boosts apply!)");
+                    SendReply(player, "<color=green>Experience Manager:</color> You gained XP from looting " + papers.amount + " research papers (XP-Boosts apply!)");
                 }
             }
         }
@@ -639,7 +639,7 @@ namespace Oxide.Plugins
                     p.AddExperience(levels * Cfg.Settings.expPerLevel);
                     reloadUI(player);
                 }
-                SendReply(player, "<color=green>ZN-XP:</color> You paid " + price + " RP.\n" + levels + " levels added!");
+                SendReply(player, "<color=green>Experience Manager:</color> You paid " + price + " RP.\n" + levels + " levels added!");
                 Puts("INFO: " + player + " purchased " + levels + " levels for " + price + " RP");
             }
             */
@@ -1254,7 +1254,7 @@ namespace Oxide.Plugins
 
         private void toggleUI(BasePlayer player)
         {
-            string msg = "<color=green>ZN-XP:</color> Profile & XP UI ";
+            string msg = "<color=green>Experience Manager:</color> Profile & XP UI ";
             if (storedData.noUIPlayers.Contains(player.userID))
             {
                 storedData.noUIPlayers.Remove(player.userID);
@@ -1490,7 +1490,7 @@ namespace Oxide.Plugins
             {
                 if (bPlayer != null)
                 {
-                    Plugin.SendReply(bPlayer, "<color=green>ZN-XP:</color> "+msg);
+                    Plugin.SendReply(bPlayer, "<color=green>Experience Manager:</color> "+msg);
                     Plugin.InfoAPI?.Call("ShowInfoPopup", bPlayer, msg);
                 }
 
@@ -1813,7 +1813,7 @@ namespace Oxide.Plugins
                 ClearSkills();
                 LevelUp(0);
                 SaveData();
-                string msg = "<color=green>ZN-XP:</color> <color=orange>" + bPlayer.displayName + "</color> reached Prestige Level " + formatedDisplayLevel;
+                string msg = "<color=green>Experience Manager:</color> <color=orange>" + bPlayer.displayName + "</color> reached Prestige Level " + formatedDisplayLevel;
                 Plugin.Server.Broadcast(msg);
                 Plugin.reloadLiveUI(bPlayer);
             }

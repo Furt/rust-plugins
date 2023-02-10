@@ -41,6 +41,7 @@ namespace Oxide.Plugins
         private Plugin ImageLibrary, ServerRewards;
         private const string permUse = "virtualquarries.use";
         private const string permProt = "virtualquarries.protected";
+        private const int pumpJackChance = 5;
         bool HasPermission(string id, string perm) => permission.UserHasPermission(id, perm);
 
         #region DataConfig
@@ -300,18 +301,29 @@ namespace Oxide.Plugins
         #endregion
 
         #region Helpers
-        private void reloadUI(BasePlayer player, string errorMsg = "none"){
+        private void reloadUI(BasePlayer player, string errorMsg = "none")
+        {
             if(!UiPlayers.Contains(player)){
                 UiPlayers.Add(player);
             }
             CuiHelper.DestroyUi(player, Plugin.Name);
             displayInfo(player, errorMsg);
         }
-        private void killUI(BasePlayer player){
+        private void killUI(BasePlayer player)
+        {
             if(UiPlayers.Contains(player)){
                 UiPlayers.Remove(player);
             }
             CuiHelper.DestroyUi(player, Plugin.Name);
+        }
+        private bool PumpJackRoll()
+        {
+            int result = UnityEngine.Random.Range(1, 100);
+            if (result >= pumpJackChance)
+            {
+                return true;
+            }
+            return false;
         }
 
         #endregion
@@ -495,6 +507,7 @@ namespace Oxide.Plugins
             public ulong ownerId;
             public int entityId;
             public DateTime lastAccessTime;
+            public bool isPumpJack;
             public float miningPerMinutePrimary;
             public float miningPerMinuteSecondary;
             public string primaryResource;
@@ -506,11 +519,12 @@ namespace Oxide.Plugins
             private float FuelPerHour = Cfg.LgfPerHour;
             private float DieselPerHour = Cfg.DieselPerHour;
 
-            public MiningEntity(ulong oId, float mPrime, float mSec, string rPrime, string rSec) : base()
+            public MiningEntity(ulong oId, bool isPJ, float mPrime, float mSec, string rPrime, string rSec) : base()
             {
                 ownerId = oId;
                 entityId = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
                 lastAccessTime = DateTime.Now;
+                isPumpJack = isPJ;
                 miningPerMinutePrimary = mPrime;
                 miningPerMinuteSecondary = mSec;
                 primaryResource = rPrime;
