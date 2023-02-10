@@ -34,7 +34,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Oxide.Plugins
 {
-    [Info("ZNQuests", "DocValerian", "1.2.4")]
+    [Info("ZNQuests", "DocValerian, Furt", "1.2.5")]
     class ZNQuests : RustPlugin
     {
         static ZNQuests Plugin;
@@ -530,7 +530,7 @@ namespace Oxide.Plugins
                     i++;
                 }
                 SaveData();
-                Plugin.SendReply(bPlayer, "<color=green>[ZN-Quests]</color> New Daily Quests are available! Check /q");
+                Plugin.SendReply(bPlayer, "<color=green>[Daily Quests]</color> New quests are available! Check /q");
 
             }
 
@@ -1128,7 +1128,7 @@ namespace Oxide.Plugins
 
         private void showInfoText(BasePlayer player)
         {
-            string infoText = "<color=orange>=== ZN Trade (v" + Plugin.Version + " ALPHA) ===</color>";
+            string infoText = "<color=orange>=== Trade (v" + Plugin.Version + " ALPHA) ===</color>";
             infoText += "\n Commands to create and manage your own PVP challenge";
             infoText += "\n A team of attackers and defenders fight against each other";
             infoText += "\n THIS IS AN ALPHA Plugin!";
@@ -1248,7 +1248,7 @@ namespace Oxide.Plugins
             {
                 Text =
                 {
-                    Text = "ZN Daily Quests -- BETA -- (Day reset in: " + untilMidnight.Hours + "h " + untilMidnight.Minutes + "min)",
+                    Text = "-- Daily Quests -- (Day reset in: " + untilMidnight.Hours + "h " + untilMidnight.Minutes + "min)",
                     FontSize = 18,
                     Align = TextAnchor.MiddleLeft,
                     Color = "1 1 1 1"
