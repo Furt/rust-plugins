@@ -969,7 +969,6 @@ namespace Oxide.Plugins
 
         private void initSkills()
         {
-
             storedData.Skills["autoloot.lv0"] = new ZNSkill
             {
                 id = "autoloot.lv0",
@@ -979,6 +978,7 @@ namespace Oxide.Plugins
                 permissionEffect = new List<string> { "znfarming.blood.pickup" },
                 description = "Passive skill that will automatically pick up Blood gained from farming etc. for you."
             };
+
             storedData.Skills["instanttp.lv0"] = new ZNSkill
             {
                 id = "instanttp.lv0",
@@ -986,8 +986,9 @@ namespace Oxide.Plugins
                 groupId = "abilities",
                 spCost = 5,
                 permissionEffect = new List<string> { "warpsgui.none", "teleportgui.none", "homesgui.none" },
-                description = "Allows you to instant Teleport with /home /tp /warp.\nAlso removes TP cooldowns."
+                description = "DO NOT PURCHASE NOT CURRENTLY WORKING\nAllows you to instant Teleport with /home /tp /warp.\nAlso removes TP cooldowns."
             };
+
             storedData.Skills["sil.lv0"] = new ZNSkill
             {
                 id = "sil.lv0",
@@ -997,6 +998,7 @@ namespace Oxide.Plugins
                 permissionEffect = new List<string> { "signartist.url", "signartist.text" },
                 description = "Allows you to put images and text on signs with /sil and /silt"
             };
+
             storedData.Skills["quarry.lv0"] = new ZNSkill
             {
                 id = "quarry.lv0",
@@ -1006,6 +1008,7 @@ namespace Oxide.Plugins
                 permissionEffect = new List<string> { "virtualquarries.use" },
                 description = "Allows you to use virtual Quarries with /mm"
             };
+
             storedData.Skills["smelt.lv0"] = new ZNSkill
             {
                 id = "smelt.lv0",
@@ -1015,6 +1018,7 @@ namespace Oxide.Plugins
                 permissionEffect = new List<string> { "virtualsmelter.use" },
                 description = "Allows you to use our efficient super smelter with /smelt"
             };
+
             storedData.Skills["kits.lv0"] = new ZNSkill
             {
                 id = "kits.lv0",
@@ -1025,6 +1029,7 @@ namespace Oxide.Plugins
                 followUpSkillId = "kits.lv1",
                 description = "Gives you a special once per wipe starter /kit"
             };
+
             storedData.Skills["kits.lv1"] = new ZNSkill
             {
                 id = "kits.lv1",
@@ -1034,8 +1039,9 @@ namespace Oxide.Plugins
                 permissionEffect = new List<string> { "kits.dailyhorse" },
                 prerequisiteSkillId = "kits.lv0",
                 followUpSkillId = "kits.lv2",
-                description = "Gives you a daily Horse & Boat /kit"
+                description = "NOT CURRENTLY WORKING\nGives you a daily Horse & Boat /kit"
             };
+
             storedData.Skills["kits.lv2"] = new ZNSkill
             {
                 id = "kits.lv2",
@@ -1047,6 +1053,7 @@ namespace Oxide.Plugins
                 followUpSkillId = "kits.lv3",
                 description = "Gives you another special once per wipe starter /kit"
             };
+
             storedData.Skills["kits.lv3"] = new ZNSkill
             {
                 id = "kits.lv3",
@@ -1055,33 +1062,295 @@ namespace Oxide.Plugins
                 spCost = 5,
                 permissionEffect = new List<string> { "kits.vetcopter" },
                 prerequisiteSkillId = "kits.lv2",
-                description = "Gives you a daily RHIB and Minicopter /kit"
+                description = "NOT CURRENTLY WORKING\nGives you a daily RHIB and Minicopter /kit"
             };
-            storedData.Skills["buyday.lv0"] = new ZNSkill { id = "buyday.lv0", name = "/day command", groupId = "abilities", spCost = 3, permissionEffect = new List<string> { "privatebuyday.use" }, followUpSkillId = "buyday.lv1", description = "Allows you to use /day and buy daylight whenever you want" };
-            storedData.Skills["buyday.lv1"] = new ZNSkill { id = "buyday.lv1", name = "/day FREE", groupId = "abilities", spCost = 4, permissionEffect = new List<string> { "privatebuyday.free" }, prerequisiteSkillId = "buyday.lv0", description = "Allows you to use /day without RP cost at any time" };
-            storedData.Skills["getmystuff.lvz"] = new ZNSkill { id = "getmystuff.lvz", name = "/getmystuff Base", groupId = "abilities", spCost = 0, permissionEffect = new List<string> { "usrtools.getmystuff.base" }, isDefault = true, followUpSkillId = "getmystuff.lv0",  description = "Allows you to use /getmystuff to help find your corpse or bag" };
-            storedData.Skills["getmystuff.lv0"] = new ZNSkill { id = "getmystuff.lv0", name = "/getmystuff BUY", groupId = "abilities", spCost = 2, permissionEffect = new List<string> { "usrtools.getmystuff" }, followUpSkillId = "getmystuff.lv1", prerequisiteSkillId = "getmystuff.lvz", description = "Allows you to use /getmystuff buy and teleport loot from your corpse to you (for RP!). Only if your corpse hasn't despawned! Not a 100% guarantee!" };
-            storedData.Skills["getmystuff.lv1"] = new ZNSkill { id = "getmystuff.lv1", name = "/getmystuff FREE", groupId = "abilities", spCost = 4, permissionEffect = new List<string> { "usrtools.getmystuff.free" }, prerequisiteSkillId = "getmystuff.lv0", followUpSkillId = "getmystuff.lv2", prestigeUnlockId = "pGetStuff", description = "Allows you to use /getmystuff buy for FREE. Not a 100% guarantee to not lose some stuff!" };
-            storedData.Skills["getmystuff.lv2"] = new ZNSkill { id = "getmystuff.lv2", name = "/getmystuff AUTO", groupId = "abilities", spCost = 4, permissionEffect = new List<string> { "restoreupondeath.admin" }, prerequisiteSkillId = "getmystuff.lv1", prestigeUnlockId = "pGetStuff", description = "With this skill active you will automatically get your stuff back & equipped. !!! NOT IN RAIDS !!! Not a 100% guarantee to not lose some stuff!" };
-            storedData.Skills["nodurability.lv0"] = new ZNSkill { id = "nodurability.lv0", name = "Items don't break", groupId = "abilities", spCost = 10, permissionEffect = new List<string> { "nodurability.allowed" }, description = "Your Items will be repaired on use\nOnly if not fully broken and NOT within Raids!" };
-            storedData.Skills["agrade.lv0"] = new ZNSkill { id = "agrade.lv0", name = "/agrade command", groupId = "abilities", spCost = 2, permissionEffect = new List<string> { "buildmanager.agrade.use" }, followUpSkillId = "agrade.lv1", description = "Allows you to use /agrade to upgrade the entire building at once (Costs RP and 1.5x Res)" };
-            storedData.Skills["agrade.lv1"] = new ZNSkill { id = "agrade.lv1", name = "/agrade FREE", groupId = "abilities", spCost = 4, permissionEffect = new List<string> { "buildmanager.agrade.free" }, prerequisiteSkillId = "agrade.lv0", description = "Allows you to use /agrade without RP cost and with 1.1x res cost." };
-            storedData.Skills["repairall.lv0"] = new ZNSkill { id = "repairall.lv0", name = "/repairall command", groupId = "abilities", spCost = 2, permissionEffect = new List<string> { "buildmanager.repairall.use" }, followUpSkillId = "repairall.lv1", description = "Allows you to use /repairall to repair the entire building at once (Costs RP and 1.5x Res)" };
-            storedData.Skills["repairall.lv1"] = new ZNSkill { id = "repairall.lv1", name = "/repairall FREE", groupId = "abilities", spCost = 4, permissionEffect = new List<string> { "buildmanager.repairall.free" }, prerequisiteSkillId = "repairall.lv0", description = "Allows you to use /repairall without RP cost and with 1.1x res cost." };
-            storedData.Skills["xpboost.lv0"] = new ZNSkill { id = "xpboost.lv0", name = "5% XP boost", groupId = "abilities", spCost = 7, permissionEffect = new List<string> { "znexperience.xpboost_10" }, followUpSkillId = "xpboost.lv1", description = "All experience gained will be increased by 5% (Including Research Paper transfer)" };
-            storedData.Skills["xpboost.lv1"] = new ZNSkill { id = "xpboost.lv1", name = "12% XP boost", groupId = "abilities", spCost = 10, permissionEffect = new List<string> { "znexperience.xpboost_20" }, prerequisiteSkillId = "xpboost.lv0", followUpSkillId = "xpboost.lv2", description = "All experience gained will be increased by 12% (Including Research Paper transfer)" };
-            storedData.Skills["xpboost.lv2"] = new ZNSkill { id = "xpboost.lv2", name = "20% XP boost", groupId = "abilities", spCost = 10, permissionEffect = new List<string> { "znexperience.xpboost_30" }, prerequisiteSkillId = "xpboost.lv1", followUpSkillId = "xpboost.lv3", description = "All experience gained will be increased by 20% (Including Research Paper transfer)" };
-            storedData.Skills["xpboost.lv3"] = new ZNSkill { id = "xpboost.lv3", name = "30% XP boost", groupId = "abilities", spCost = 10, permissionEffect = new List<string> { "znexperience.xpboost_40" }, prerequisiteSkillId = "xpboost.lv2", followUpSkillId = "xpboost.lv4", prestigeUnlockId = "pXpboost", description = "All experience gained will be increased by 30% (Including Research Paper transfer)" };
-            storedData.Skills["xpboost.lv4"] = new ZNSkill { id = "xpboost.lv4", name = "40% XP boost", groupId = "abilities", spCost = 10, permissionEffect = new List<string> { "znexperience.xpboost_50" }, prerequisiteSkillId = "xpboost.lv3", prestigeUnlockId = "pXpboost", description = "All experience gained will be increased by 40% (Including Research Paper transfer)" };
-            storedData.Skills["backpack.lv0"] = new ZNSkill { id = "backpack.lv0", name = "Backpack Base", groupId = "abilities", spCost = 0, permissionEffect = new List<string> { "backpacks.use", "backpacks.use.2" }, followUpSkillId = "backpack.lv1", isDefault = true, description = "Gives you a Backpack with <color=green>2</color> rows" };
-            storedData.Skills["backpack.lv1"] = new ZNSkill { id = "backpack.lv1", name = "Backpack Lv. 1", groupId = "abilities", spCost = 1, permissionEffect = new List<string> { "backpacks.use.3" }, prerequisiteSkillId = "backpack.lv0", followUpSkillId = "backpack.lv2", description = "Gives you a Backpack with <color=green>3</color> rows" };
-            storedData.Skills["backpack.lv2"] = new ZNSkill { id = "backpack.lv2", name = "Backpack Lv. 2", groupId = "abilities", spCost = 2, permissionEffect = new List<string> { "backpacks.use.4" }, prerequisiteSkillId = "backpack.lv1", followUpSkillId = "backpack.lv3", description = "Gives you a Backpack with <color=green>4</color> rows" };
-            storedData.Skills["backpack.lv3"] = new ZNSkill { id = "backpack.lv3", name = "Backpack Lv. 3", groupId = "abilities", spCost = 3, permissionEffect = new List<string> { "backpacks.use.5" }, prerequisiteSkillId = "backpack.lv2", followUpSkillId = "backpack.lv4", description = "Gives you a Backpack with <color=green>5</color> rows" };
-            storedData.Skills["backpack.lv4"] = new ZNSkill { id = "backpack.lv4", name = "Backpack Lv. 4", groupId = "abilities", spCost = 4, permissionEffect = new List<string> { "backpacks.use.6" }, prerequisiteSkillId = "backpack.lv3", followUpSkillId = "backpack.lv5", prestigeUnlockId = "pBackpack", description = "Gives you a Backpack with <color=green>6</color> rows" };
-            storedData.Skills["backpack.lv5"] = new ZNSkill { id = "backpack.lv5", name = "Backpack Lv. 5", groupId = "abilities", spCost = 4, permissionEffect = new List<string> { "backpacks.use.7" }, prerequisiteSkillId = "backpack.lv4", prestigeUnlockId = "pBackpack", description = "Gives you a Backpack with <color=green>7</color> rows" };
-            storedData.Skills["backpack.lv6"] = new ZNSkill { id = "backpack.lv6", name = "Backpack Lv. 6", groupId = "abilities", spCost = 4, permissionEffect = new List<string> { "backpacks.use.8" }, prerequisiteSkillId = "backpack.lv5", prestigeUnlockId = "pBackpack", description = "Gives you a Backpack with <color=green>8</color> rows" };
-            storedData.Skills["treeplanter.lv0"] = new ZNSkill { id = "treeplanter.lv0", name = "/tree command", groupId = "abilities", spCost = 3, permissionEffect = new List<string> { "treeplanter.use" }, description = "Allows you to plant trees near your base, that can't be farmed by others. (BETA!)" };
-            storedData.Skills["craftmulti.lv0"] = new ZNSkill { id = "craftmulti.lv0", name = "/cm (craft multiplier)", groupId = "abilities", spCost = 2, permissionEffect = new List<string> { "craftmultiplier.use" }, description = "Allows you to use the <color=orange>/cm 10</color> command to multiply increase your default craft stack. Use <color=orange>/cm</color> to deactivate (BETA!)" };
+
+            storedData.Skills["buyday.lv0"] = new ZNSkill
+            {
+                id = "buyday.lv0",
+                name = "/day command",
+                groupId = "abilities",
+                spCost = 3,
+                permissionEffect = new List<string> { "privatebuyday.use" },
+                followUpSkillId = "buyday.lv1",
+                description = "Allows you to use /day and buy daylight whenever you want"
+            };
+
+            storedData.Skills["buyday.lv1"] = new ZNSkill
+            {
+                id = "buyday.lv1",
+                name = "/day FREE",
+                groupId = "abilities",
+                spCost = 4,
+                permissionEffect = new List<string> { "privatebuyday.free" },
+                prerequisiteSkillId = "buyday.lv0",
+                description = "Allows you to use /day without RP cost at any time" 
+            };
+
+            storedData.Skills["getmystuff.lvz"] = new ZNSkill 
+            { 
+                id = "getmystuff.lvz",
+                name = "/getmystuff Base",
+                groupId = "abilities",
+                spCost = 0,
+                permissionEffect = new List<string> { "usrtools.getmystuff.base" },
+                isDefault = true,
+                followUpSkillId = "getmystuff.lv0",
+                description = "Allows you to use /getmystuff to help find your corpse or bag"
+            };
+
+            storedData.Skills["getmystuff.lv0"] = new ZNSkill 
+            {
+                id = "getmystuff.lv0",
+                name = "/getmystuff BUY",
+                groupId = "abilities",
+                spCost = 2,
+                permissionEffect = new List<string> { "usrtools.getmystuff" },
+                followUpSkillId = "getmystuff.lv1",
+                prerequisiteSkillId = "getmystuff.lvz",
+                description = "Allows you to use /getmystuff buy and teleport loot from your corpse to you (for RP!). Only if your corpse hasn't despawned! Not a 100% guarantee!"
+            };
+
+            storedData.Skills["getmystuff.lv1"] = new ZNSkill 
+            { 
+                id = "getmystuff.lv1",
+                name = "/getmystuff FREE",
+                groupId = "abilities",
+                spCost = 4,
+                permissionEffect = new List<string> { "usrtools.getmystuff.free" },
+                prerequisiteSkillId = "getmystuff.lv0",
+                followUpSkillId = "getmystuff.lv2",
+                prestigeUnlockId = "pGetStuff",
+                description = "Allows you to use /getmystuff buy for FREE. Not a 100% guarantee to not lose some stuff!" 
+            };
+
+            storedData.Skills["getmystuff.lv2"] = new ZNSkill 
+            {
+                id = "getmystuff.lv2",
+                name = "/getmystuff AUTO",
+                groupId = "abilities",
+                spCost = 4,
+                permissionEffect = new List<string> { "restoreupondeath.admin" },
+                prerequisiteSkillId = "getmystuff.lv1",
+                prestigeUnlockId = "pGetStuff",
+                description = "With this skill active you will automatically get your stuff back & equipped. !!! NOT IN RAIDS !!! Not a 100% guarantee to not lose some stuff!" 
+            };
+
+            storedData.Skills["nodurability.lv0"] = new ZNSkill 
+            { 
+                id = "nodurability.lv0",
+                name = "Items don't break",
+                groupId = "abilities",
+                spCost = 10,
+                permissionEffect = new List<string> { "nodurability.allowed" },
+                description = "Your Items will be repaired on use\nOnly if not fully broken and NOT within Raids!"
+            };
+
+            storedData.Skills["agrade.lv0"] = new ZNSkill
+            {
+                id = "agrade.lv0",
+                name = "/agrade command",
+                groupId = "abilities",
+                spCost = 2,
+                permissionEffect = new List<string> { "buildmanager.agrade.use" },
+                followUpSkillId = "agrade.lv1",
+                description = "Allows you to use /agrade to upgrade the entire building at once (Costs RP and 1.5x Res)"
+            };
+
+            storedData.Skills["agrade.lv1"] = new ZNSkill 
+            { 
+                id = "agrade.lv1",
+                name = "/agrade FREE", 
+                groupId = "abilities",
+                spCost = 4,
+                permissionEffect = new List<string> { "buildmanager.agrade.free" },
+                prerequisiteSkillId = "agrade.lv0",
+                description = "Allows you to use /agrade without RP cost and with 1.1x res cost."
+            };
+
+            storedData.Skills["repairall.lv0"] = new ZNSkill 
+            {
+                id = "repairall.lv0",
+                name = "/repairall command",
+                groupId = "abilities",
+                spCost = 2,
+                permissionEffect = new List<string> { "buildmanager.repairall.use" },
+                followUpSkillId = "repairall.lv1",
+                description = "Allows you to use /repairall to repair the entire building at once (Costs RP and 1.5x Res)" 
+            };
+
+            storedData.Skills["repairall.lv1"] = new ZNSkill 
+            {
+                id = "repairall.lv1",
+                name = "/repairall FREE",
+                groupId = "abilities",
+                spCost = 4,
+                permissionEffect = new List<string> { "buildmanager.repairall.free" },
+                prerequisiteSkillId = "repairall.lv0",
+                description = "Allows you to use /repairall without RP cost and with 1.1x res cost."
+            };
+
+            storedData.Skills["xpboost.lv0"] = new ZNSkill 
+            { 
+                id = "xpboost.lv0",
+                name = "5% XP boost",
+                groupId = "abilities",
+                spCost = 7,
+                permissionEffect = new List<string> { "znexperience.xpboost_10" },
+                followUpSkillId = "xpboost.lv1",
+                description = "All experience gained will be increased by 5% (Including Research Paper transfer)" 
+            };
+
+            storedData.Skills["xpboost.lv1"] = new ZNSkill 
+            { 
+                id = "xpboost.lv1",
+                name = "12% XP boost",
+                groupId = "abilities", 
+                spCost = 10,
+                permissionEffect = new List<string> { "znexperience.xpboost_20" },
+                prerequisiteSkillId = "xpboost.lv0",
+                followUpSkillId = "xpboost.lv2",
+                description = "All experience gained will be increased by 12% (Including Research Paper transfer)"
+            };
+
+            storedData.Skills["xpboost.lv2"] = new ZNSkill
+            { 
+                id = "xpboost.lv2",
+                name = "20% XP boost",
+                groupId = "abilities",
+                spCost = 10,
+                permissionEffect = new List<string> { "znexperience.xpboost_30" },
+                prerequisiteSkillId = "xpboost.lv1",
+                followUpSkillId = "xpboost.lv3",
+                description = "All experience gained will be increased by 20% (Including Research Paper transfer)" 
+            };
+
+            storedData.Skills["xpboost.lv3"] = new ZNSkill 
+            { id = "xpboost.lv3",
+                name = "30% XP boost",
+                groupId = "abilities",
+                spCost = 10,
+                permissionEffect = new List<string> { "znexperience.xpboost_40" },
+                prerequisiteSkillId = "xpboost.lv2",
+                followUpSkillId = "xpboost.lv4",
+                prestigeUnlockId = "pXpboost",
+                description = "All experience gained will be increased by 30% (Including Research Paper transfer)"
+            };
+
+            storedData.Skills["xpboost.lv4"] = new ZNSkill
+            {
+                id = "xpboost.lv4", 
+                name = "40% XP boost",
+                groupId = "abilities", 
+                spCost = 10, 
+                permissionEffect = new List<string> { "znexperience.xpboost_50" },
+                prerequisiteSkillId = "xpboost.lv3",
+                prestigeUnlockId = "pXpboost",
+                description = "All experience gained will be increased by 40% (Including Research Paper transfer)"
+            };
+
+            storedData.Skills["backpack.lv0"] = new ZNSkill 
+            {
+                id = "backpack.lv0",
+                name = "Backpack Base", 
+                groupId = "abilities",
+                spCost = 0, 
+                permissionEffect = new List<string> { "backpacks.use", "backpacks.use.2" },
+                followUpSkillId = "backpack.lv1", 
+                isDefault = true,
+                description = "Gives you a Backpack with <color=green>2</color> rows"
+            };
+
+            storedData.Skills["backpack.lv1"] = new ZNSkill
+            { id = "backpack.lv1",
+                name = "Backpack Lv. 1",
+                groupId = "abilities",
+                spCost = 1,
+                permissionEffect = new List<string> { "backpacks.use.3" },
+                prerequisiteSkillId = "backpack.lv0",
+                followUpSkillId = "backpack.lv2",
+                description = "Gives you a Backpack with <color=green>3</color> rows"
+            };
+
+            storedData.Skills["backpack.lv2"] = new ZNSkill
+            { 
+                id = "backpack.lv2",
+                name = "Backpack Lv. 2",
+                groupId = "abilities",
+                spCost = 2,
+                permissionEffect = new List<string> { "backpacks.use.4" },
+                prerequisiteSkillId = "backpack.lv1",
+                followUpSkillId = "backpack.lv3",
+                description = "Gives you a Backpack with <color=green>4</color> rows" 
+            };
+
+            storedData.Skills["backpack.lv3"] = new ZNSkill 
+            {
+                id = "backpack.lv3",
+                name = "Backpack Lv. 3",
+                groupId = "abilities",
+                spCost = 3,
+                permissionEffect = new List<string> { "backpacks.use.5" },
+                prerequisiteSkillId = "backpack.lv2",
+                followUpSkillId = "backpack.lv4",
+                description = "Gives you a Backpack with <color=green>5</color> rows" 
+            };
+
+            storedData.Skills["backpack.lv4"] = new ZNSkill
+            { 
+                id = "backpack.lv4",
+                name = "Backpack Lv. 4",
+                groupId = "abilities",
+                spCost = 4,
+                permissionEffect = new List<string> { "backpacks.use.6" },
+                prerequisiteSkillId = "backpack.lv3",
+                followUpSkillId = "backpack.lv5",
+                prestigeUnlockId = "pBackpack",
+                description = "Gives you a Backpack with <color=green>6</color> rows"
+            };
+
+            storedData.Skills["backpack.lv5"] = new ZNSkill 
+            {
+                id = "backpack.lv5",
+                name = "Backpack Lv. 5",
+                groupId = "abilities",
+                spCost = 4,
+                permissionEffect = new List<string> { "backpacks.use.7" },
+                prerequisiteSkillId = "backpack.lv4", prestigeUnlockId = "pBackpack",
+                description = "Gives you a Backpack with <color=green>7</color> rows" 
+            };
+
+            storedData.Skills["backpack.lv6"] = new ZNSkill 
+            { 
+                id = "backpack.lv6",
+                name = "Backpack Lv. 6",
+                groupId = "abilities",
+                spCost = 4,
+                permissionEffect = new List<string> { "backpacks.use.8" },
+                prerequisiteSkillId = "backpack.lv5",
+                prestigeUnlockId = "pBackpack",
+                description = "Gives you a Backpack with <color=green>8</color> rows"
+            };
+
+            storedData.Skills["treeplanter.lv0"] = new ZNSkill 
+            { 
+                id = "treeplanter.lv0",
+                name = "/tree command",
+                groupId = "abilities",
+                spCost = 3,
+                permissionEffect = new List<string> { "treeplanter.use" },
+                description = "Allows you to plant trees near your base, that can't be farmed by others. (BETA!)"
+            };
+
+            storedData.Skills["craftmulti.lv0"] = new ZNSkill 
+            { 
+                id = "craftmulti.lv0",
+                name = "/cm (craft multiplier)",
+                groupId = "abilities", 
+                spCost = 2,
+                permissionEffect = new List<string> { "craftmultiplier.use" },
+                description = "Allows you to use the <color=orange>/cm 10</color> command to multiply increase your default craft stack. Use <color=orange>/cm</color> to deactivate (BETA!)" 
+            };
 
             storedData.Skills["workbench.lv0"] = new ZNSkill { 
                 id = "workbench.lv0", 
@@ -1102,7 +1371,7 @@ namespace Oxide.Plugins
                 permissionEffect = new List<string> { "buildingworkbench.global1" },
                 prerequisiteSkillId = "workbench.lv0",
                 followUpSkillId = "workbench.lv2",
-                description = "Gives you a global Workbench 1 effect.\nBuilding effect may overrule this within buildings!"
+                description = "NOT TESTED\nGives you a global Workbench 1 effect.\nBuilding effect may overrule this within buildings!"
             };
             storedData.Skills["workbench.lv2"] = new ZNSkill
             {
@@ -1114,7 +1383,7 @@ namespace Oxide.Plugins
                 permissionEffect = new List<string> { "buildingworkbench.global2" },
                 prerequisiteSkillId = "workbench.lv1",
                 followUpSkillId = "workbench.lv3",
-                description = "Gives you a global Workbench 2 effect.\nBuilding effect may overrule this within buildings!"
+                description = "NOT TESTED\nGives you a global Workbench 2 effect.\nBuilding effect may overrule this within buildings!"
             };
             storedData.Skills["workbench.lv3"] = new ZNSkill
             {
@@ -1125,7 +1394,7 @@ namespace Oxide.Plugins
                 prestigeUnlockId = "pGlobalBench",
                 permissionEffect = new List<string> { "buildingworkbench.global3" },
                 prerequisiteSkillId = "workbench.lv2",
-                description = "Gives you a global Workbench 3 effect.\nOCraft everything, everywhere!"
+                description = "NOT TESTED\nGives you a global Workbench 3 effect.\nOCraft everything, everywhere!"
             };
             
             SaveData(storedData);
