@@ -969,6 +969,27 @@ namespace Oxide.Plugins
 
         private void initSkills()
         {
+            storedData.Skills["recycler.lv0"] = new ZNSkill
+            {
+                id = "recycler.lv0",
+                name = "Craft Recycler",
+                groupId = "abilities",
+                spCost = 2,
+                permissionEffect = new List<string> { "extendedrecycler.use" },
+                followUpSkillId = "recycler.lv1",
+                description = "Craft a recycler to place in your base.\n Use /recycer.craft to make."
+            };
+
+            storedData.Skills["recycler.lv1"] = new ZNSkill
+            {
+                id = "recycler.lv1",
+                name = "Recycler Speed",
+                groupId = "abilities",
+                spCost = 3,
+                permissionEffect = new List<string> { "recyclerspeed.use" },
+                description = "Increase the rate at which you recycle."
+            };
+
             storedData.Skills["autoloot.lv0"] = new ZNSkill
             {
                 id = "autoloot.lv0",
