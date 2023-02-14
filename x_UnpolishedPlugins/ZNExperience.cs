@@ -969,15 +969,6 @@ namespace Oxide.Plugins
 
         private void initSkills()
         {
-            storedData.Skills["rec.lv0"] = new ZNSkill
-            {
-                id = "rec.lv0",
-                name = "/recycler.craft skill",
-                groupId = "abilities",
-                spCost = 2,
-                permissionEffect = new List<string> { "extendedrecycler.use" },
-                description = "Craft a recycler to place in your base.\n Use /recycler.craft to make."
-            };
 
             storedData.Skills["autoloot.lv0"] = new ZNSkill
             {
@@ -1027,6 +1018,28 @@ namespace Oxide.Plugins
                 spCost = 2,
                 permissionEffect = new List<string> { "virtualsmelter.use" },
                 description = "Allows you to use our efficient super smelter with /smelt"
+            };
+
+            storedData.Skills["rec.lv0"] = new ZNSkill
+            {
+                id = "rec.lv0",
+                name = "/recycler.craft skill",
+                groupId = "abilities",
+                spCost = 2,
+                permissionEffect = new List<string> { "extendedrecycler.use" },
+                followUpSkillId = "rec.lv1",
+                description = "Craft a recycler to place in your base.\n Use /recycler.craft to make."
+            };
+
+            storedData.Skills["rec.lv1"] = new ZNSkill
+            {
+                id = "rec.lv1",
+                name = "Recycler Speed",
+                groupId = "abilities",
+                spCost = 3,
+                permissionEffect = new List<string> { "recyclerspeed.use" },
+                prerequisiteSkillId = "rec.lv0",
+                description = "A passive ability that increases recycler speed."
             };
 
             storedData.Skills["kits.lv0"] = new ZNSkill
