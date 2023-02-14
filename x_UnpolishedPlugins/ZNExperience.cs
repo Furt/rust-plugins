@@ -34,7 +34,7 @@ using Facepunch;
 
 namespace Oxide.Plugins
 {
-    [Info("ZNExperience", "DocValerian, Furt", "2.0.6")]
+    [Info("ZNExperience", "DocValerian, Furt", "2.1.0")]
     public class ZNExperience : RustPlugin
     {
         static ZNExperience Plugin;
@@ -969,25 +969,14 @@ namespace Oxide.Plugins
 
         private void initSkills()
         {
-            storedData.Skills["recycler.lv0"] = new ZNSkill
+            storedData.Skills["rec.lv0"] = new ZNSkill
             {
-                id = "recycler.lv0",
-                name = "Craft Recycler",
+                id = "rec.lv0",
+                name = "/recycler.craft skill",
                 groupId = "abilities",
                 spCost = 2,
                 permissionEffect = new List<string> { "extendedrecycler.use" },
-                followUpSkillId = "recycler.lv1",
-                description = "Craft a recycler to place in your base.\n Use /recycer.craft to make."
-            };
-
-            storedData.Skills["recycler.lv1"] = new ZNSkill
-            {
-                id = "recycler.lv1",
-                name = "Recycler Speed",
-                groupId = "abilities",
-                spCost = 3,
-                permissionEffect = new List<string> { "recyclerspeed.use" },
-                description = "Increase the rate at which you recycle."
+                description = "Craft a recycler to place in your base.\n Use /recycler.craft to make."
             };
 
             storedData.Skills["autoloot.lv0"] = new ZNSkill
@@ -1006,8 +995,8 @@ namespace Oxide.Plugins
                 name = "Instant Teleport",
                 groupId = "abilities",
                 spCost = 5,
-                permissionEffect = new List<string> { "warpsgui.none", "teleportgui.none", "homesgui.none" },
-                description = "DO NOT PURCHASE NOT CURRENTLY WORKING\nAllows you to instant Teleport with /home /tp /warp.\nAlso removes TP cooldowns."
+                permissionEffect = new List<string> { "nteleportation.vip" },
+                description = "Allows you to instant Teleport with /home /tpr /outpost /bandit.\nAlso removes TP cooldowns."
             };
 
             storedData.Skills["sil.lv0"] = new ZNSkill
