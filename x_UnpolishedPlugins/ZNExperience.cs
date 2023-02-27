@@ -1020,6 +1020,28 @@ namespace Oxide.Plugins
                 description = "Allows you to use our efficient super smelter with /smelt"
             };
 
+            storedData.Skills["hack.lv0"] = new ZNSkill
+            {
+                id = "hack.lv0",
+                name = "Haxor lvl1",
+                groupId = "abilities",
+                spCost = 2,
+                permissionEffect = new List<string> { "hackablecrateunlock.vip1" },
+                followUpSkillId = "hack.lv1",
+                description = "Minor time reduction on hacking crates."
+            };
+
+            storedData.Skills["hack.lv1"] = new ZNSkill
+            {
+                id = "hack.lv1",
+                name = "Haxor lvl2",
+                groupId = "abilities",
+                spCost = 3,
+                permissionEffect = new List<string> { "hackablecrateunlock.vip2" },
+                prerequisiteSkillId = "hack.lv0",
+                description = "Major time reduction on hacking crates."
+            };
+
             storedData.Skills["rec.lv0"] = new ZNSkill
             {
                 id = "rec.lv0",
@@ -1328,7 +1350,6 @@ namespace Oxide.Plugins
                 permissionEffect = new List<string> { "backpacks.use.6" },
                 prerequisiteSkillId = "backpack.lv3",
                 followUpSkillId = "backpack.lv5",
-                prestigeUnlockId = "pBackpack",
                 description = "Gives you a Backpack with <color=green>6</color> rows"
             };
 
@@ -1339,7 +1360,7 @@ namespace Oxide.Plugins
                 groupId = "abilities",
                 spCost = 4,
                 permissionEffect = new List<string> { "backpacks.use.7" },
-                prerequisiteSkillId = "backpack.lv4", prestigeUnlockId = "pBackpack",
+                prerequisiteSkillId = "backpack.lv4",
                 description = "Gives you a Backpack with <color=green>7</color> rows" 
             };
 
@@ -1353,6 +1374,18 @@ namespace Oxide.Plugins
                 prerequisiteSkillId = "backpack.lv5",
                 prestigeUnlockId = "pBackpack",
                 description = "Gives you a Backpack with <color=green>8</color> rows"
+            };
+
+            storedData.Skills["backpack.lv7"] = new ZNSkill
+            {
+                id = "backpack.lv7",
+                name = "Backpack Lv. 7",
+                groupId = "abilities",
+                spCost = 4,
+                permissionEffect = new List<string> { "backpacks.use.9" },
+                prerequisiteSkillId = "backpack.lv6",
+                prestigeUnlockId = "pBackpack",
+                description = "Gives you a Backpack with <color=green>9</color> rows"
             };
 
             storedData.Skills["treeplanter.lv0"] = new ZNSkill 
